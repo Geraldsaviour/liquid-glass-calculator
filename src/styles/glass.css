@@ -412,3 +412,10 @@ body {
 .glass-card {
   transition: box-shadow 0.4s ease, max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ── Hide "Both" mode tab on mobile ── */
+@media (max-width: 767px) {
+  .mode-tab.desktop-only {
+    display: none;
+  }
+}

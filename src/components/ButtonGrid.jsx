@@ -92,6 +92,23 @@ export default function ButtonGrid({ actions, isDeg, setIsDeg, onModeChange, the
     onModeChange?.(m)
   }
 
+  // If viewport shrinks to mobile while in 'both' mode, fall back to 'standard'
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const handleChange = (e) => {
+      if (e.matches && mode === 'both') changeMode('standard')
+    }
+    mq.addEventListener('change', handleChange)
+    return () => mq.removeEventListener('change', handleChange)
+  }, [mode])
+
+  const changeMode = (m) => {
+    if (m === mode) return
+    prevMode.current = mode
+    setMode(m)
+    onModeChange?.(m)
+  }
+
   // Stagger buttons in on mount
   useEffect(() => {
     const btns = gridRef.current?.querySelectorAll('.calc-btn')
@@ -161,7 +178,7 @@ export default function ButtonGrid({ actions, isDeg, setIsDeg, onModeChange, the
           {['standard', 'scientific', 'both'].map(m => (
             <button
               key={m}
-              className={`mode-tab ${mode === m ? 'active' : 'inactive'}`}
+              className={`mode-tab ${mode === m ? 'active' : 'inactive'} ${m === 'both' ? 'desktop-only' : ''}`}
               onClick={() => changeMode(m)}
             >
               {m.charAt(0).toUpperCase() + m.slice(1)}
