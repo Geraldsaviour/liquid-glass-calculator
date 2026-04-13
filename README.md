@@ -2,6 +2,10 @@
 
 A standard and scientific calculator with glassmorphism UI, light/dark theming, and GSAP animations.
 
+## 🔗 Live Site
+
+**[https://liquid-glass-calculator-mcdevv.vercel.app/](https://liquid-glass-calculator-mcdevv.vercel.app/)**
+
 ## Purpose
 
 Provides a fully functional calculator with standard and scientific modes. Features persistent theme preference, mouse-driven background parallax, and animated button interactions.
@@ -46,7 +50,7 @@ liquid-glass-calculator/
 Requires Node.js 18 or later.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/liquid-glass-calculator.git
+git clone https://github.com/Geraldsaviour/liquid-glass-calculator.git
 cd liquid-glass-calculator
 npm install
 npm run dev
